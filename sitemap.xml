@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+	<!-- Main page -->
+	<url>
+		<loc>https://silverev.ru/</loc>
+	</url>
+
+	<!-- Sections -->
+	<url>
+		<loc>https://silverev.ru/news.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/reviews.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/history.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/knowledge.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/archive.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/about.html</loc>
+	</url>
+
+	<!-- Reviews -->
+	<url>
+		<loc>https://silverev.ru/review-07-2026.html</loc>
+	</url>
+
+	<!-- History -->
+	<url>
+		<loc>https://silverev.ru/actual-ssb.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/new-energy.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/lithium-focus.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/space-and-cars.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/brothers-hunt.html</loc>
+	</url>
+	<url>
+		<loc>https://silverev.ru/silver-zinc-history.html</loc>
+	</url>
+
+</urlset>

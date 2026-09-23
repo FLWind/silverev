@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="SilverEV" width="64" height="64"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><defs>
+            <linearGradient id="silverev-logo-silver" x1="0" x2="1">
+                <stop offset="0%" stop-color="#F7FAFC"></stop>
+                <stop offset="50%" stop-color="#AABBC6"></stop>
+                <stop offset="100%" stop-color="#EAF1F5"></stop>
+            </linearGradient>
+
+            <linearGradient id="silverev-logo-accent" x1="0" x2="1">
+                <stop offset="0%" stop-color="#6EC7D8"></stop>
+                <stop offset="100%" stop-color="#F3B98A"></stop>
+            </linearGradient>
+        </defs><rect width="64" height="64" rx="18" fill="#08131E"></rect><path d="M43 17H27c-6 0-10 3-10 8 0 4 3 7 9 8l10 2c3 1 5 2 5 4 0 3-3 5-7 5H17" fill="none" stroke="url(#silverev-logo-silver)" stroke-width="6" stroke-linecap="round"></path><path d="M48 24v17M43 30h10M43 36h10" fill="none" stroke="url(#silverev-logo-accent)" stroke-width="4" stroke-linecap="round"></path></svg>

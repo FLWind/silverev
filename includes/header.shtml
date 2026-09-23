@@ -1,0 +1,17 @@
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="/">
+                <img src="/favicon.svg" class="brand-mark" alt="SilverEV">
+                <span class="brand-text"><strong>Silver<span>EV</span></strong><small>Silver in Electric Vehicle</small></span>
+            </a>
+            <nav class="main-nav" aria-label="Основная навигация">
+                <a class="nav-link active" href="/" aria-current="page">Главная</a>
+                <a class="nav-link" href="/news.html">Новости</a>
+                <a class="nav-link" href="/reviews.html">Обзоры</a>
+                <a class="nav-link" href="/history.html">История</a>
+                <a class="nav-link" href="/knowledge.html">База знаний</a>
+                <a class="nav-link" href="/archive.html">Архив</a>
+                <a class="nav-link" href="/about.html">О проекте</a>
+            </nav>
+        </div>
+    </header>
