@@ -1,7 +1,24 @@
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div><div class="footer-brand">Silver<span>EV</span></div><p>База знаний о роли серебра в аккумуляторных батареях электроавтомобилей и другой техники.</p></div>
-            <div><h3>Разделы</h3><a href="/reviews.html">Обзоры</a><a href="/history.html">История</a></div>
-            <div><h3>Контакты</h3><a href="mailto:contact@silverev.ru">contact@silverev.ru</a><p class="small">Для источников, замечаний и предложений.</p></div>
-        </div><div class="container footer-bottom"><span>© <span data-current-year></span> SilverEV.ru</span><span>Независимый аналитический проект</span></div>
-    </footer>
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <div class="footer-brand">Silver<span>EV</span></div>
+            <p>База знаний о роли серебра в аккумуляторных батареях электромобилей и другой техники.</p>
+        </div>
+        <div>
+            <h3>Разделы</h3>
+            <a href="/reviews.html">Обзоры</a>
+            <a href="/history.html">История</a>
+            <a href="/knowledge.html">База знаний</a>
+            <a href="/archive.html">Архив</a>
+        </div>
+        <div>
+            <h3>Контакты</h3>
+            <a href="mailto:contact@silverev.ru">contact@silverev.ru</a>
+            <p class="small">Для источников, замечаний и предложений.</p>
+        </div>
+    </div>
+    <div class="container footer-bottom">
+        <span>© <span data-current-year></span> SilverEV.ru</span>
+        <span>Независимый исследовательский проект</span>
+    </div>
+</footer>
