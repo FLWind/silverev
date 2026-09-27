@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 2
 
       - name: Verify reviewed base
-        run: test "$(git rev-parse HEAD^)" = "6ab65397e1b4a14d18d8f9734293c89438774f12"
+        run: test "$(git rev-parse HEAD^)" = "89a84929f0ddd9436760f644e48548b791d14bd1"
 
       - name: Install Apache
         run: |
@@ -113,7 +113,7 @@ jobs:
                       const q = s.value.trim().toLowerCase();
                       let c = 0;
                       cards.forEach(k => {
-                          const show = !q || (\`${k.dataset.search || ''} ${k.textContent}\`).toLowerCase().includes(q);
+                          const show = !q || ((k.dataset.search || '') + ' ' + k.textContent).toLowerCase().includes(q);
                           k.hidden = !show;
                           if (show) c++;
                       });
