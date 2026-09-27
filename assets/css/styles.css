@@ -557,7 +557,7 @@ button, input {
         font-weight: 500
     }
 
-.news-item h2 {
+.news-item h2, .news-item h3 {
     font-size: 27px;
     line-height: 1.2;
     margin: 0 0 10px
@@ -565,6 +565,44 @@ button, input {
 
 .news-item p {
     color: var(--muted)
+}
+
+.news-years {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px
+}
+
+.news-years a:hover, .news-years a:focus-visible {
+    border-color: var(--accent);
+    background: rgba(110,199,216,.22)
+}
+
+.news-note {
+    max-width: 900px;
+    margin: 0 0 36px;
+    color: var(--muted);
+    font-size: 14px
+}
+
+.news-year + .news-year {
+    margin-top: 52px
+}
+
+.news-year > h2 {
+    scroll-margin-top: 120px;
+    margin: 0 0 20px;
+    font-size: 32px
+}
+
+.news-year .links {
+    flex-wrap: wrap;
+    row-gap: 8px
+}
+
+.news-year .links a {
+    overflow-wrap: anywhere
 }
 
 .links {
