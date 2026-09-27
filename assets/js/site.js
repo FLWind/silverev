@@ -1,1 +1,55 @@
-(() => { const b = document.querySelector('.menu-toggle'), n = document.querySelector('.main-nav'); if (b && n) b.addEventListener('click', () => { const o = n.classList.toggle('open'); b.setAttribute('aria-expanded', String(o)) }); document.querySelectorAll('[data-current-year]').forEach(e => e.textContent = new Date().getFullYear()); const fs = document.querySelectorAll('[data-filter]'), items = document.querySelectorAll('.filterable'); fs.forEach(f => f.addEventListener('click', () => { fs.forEach(x => x.classList.remove('active')); f.classList.add('active'); const v = f.dataset.filter; items.forEach(i => i.hidden = v !== 'all' && !(i.dataset.category || '').split(' ').includes(v)) })); const s = document.querySelector('[data-knowledge-search]'), cards = document.querySelectorAll('[data-knowledge-grid] .knowledge-card'), empty = document.querySelector('[data-empty-state]'); if (s) s.addEventListener('input', () => { const q = s.value.trim().toLowerCase(); let c = 0; cards.forEach(k => { const show = !q || (`${k.dataset.search || ''} ${k.textContent}`).toLowerCase().includes(q); k.hidden = !show; if (show) c++ }); if (empty) empty.hidden = c !== 0 }) })();
+(() => {
+    const b = document.querySelector('.menu-toggle');
+    const n = document.querySelector('.main-nav');
+
+    if (b && n) {
+        b.addEventListener('click', () => {
+            const o = n.classList.toggle('open');
+            b.setAttribute('aria-expanded', String(o));
+        });
+    }
+
+    const section = document.body?.dataset.section;
+    if (section) {
+        document.querySelectorAll('.main-nav .nav-link[data-section]').forEach(link => {
+            const active = link.dataset.section === section;
+            link.classList.toggle('active', active);
+            if (active) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    }
+
+    document.querySelectorAll('[data-current-year]').forEach(
+        e => e.textContent = new Date().getFullYear()
+    );
+
+    const fs = document.querySelectorAll('[data-filter]');
+    const items = document.querySelectorAll('.filterable');
+    fs.forEach(f => f.addEventListener('click', () => {
+        fs.forEach(x => x.classList.remove('active'));
+        f.classList.add('active');
+        const v = f.dataset.filter;
+        items.forEach(i => {
+            i.hidden = v !== 'all' && !(i.dataset.category || '').split(' ').includes(v);
+        });
+    }));
+
+    const s = document.querySelector('[data-knowledge-search]');
+    const cards = document.querySelectorAll('[data-knowledge-grid] .knowledge-card');
+    const empty = document.querySelector('[data-empty-state]');
+    if (s) {
+        s.addEventListener('input', () => {
+            const q = s.value.trim().toLowerCase();
+            let c = 0;
+            cards.forEach(k => {
+                const show = !q || ((k.dataset.search || '') + ' ' + k.textContent).toLowerCase().includes(q);
+                k.hidden = !show;
+                if (show) c++;
+            });
+            if (empty) empty.hidden = c !== 0;
+        });
+    }
+})();

@@ -7,43 +7,15 @@
                 <small>Silver in Electric Vehicle</small>
             </span>
         </a>
-		<button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav class="main-nav" aria-label="Основная навигация">
-            <!--#if expr="v('section') = 'home'" -->
-            <a class="nav-link active" href="/" aria-current="page">Главная</a>
-            <!--#else -->
-            <a class="nav-link" href="/">Главная</a>
-            <!--#endif -->
-            <!--#if expr="v('section') = 'news'" -->
-            <a class="nav-link active" href="/news.html" aria-current="page">Новости</a>
-            <!--#else -->
-            <a class="nav-link" href="/news.html">Новости</a>
-            <!--#endif -->
-            <!--#if expr="v('section') = 'reviews'" -->
-            <a class="nav-link active" href="/reviews.html" aria-current="page">Обзоры</a>
-            <!--#else -->
-            <a class="nav-link" href="/reviews.html">Обзоры</a>
-            <!--#endif -->
-            <!--#if expr="v('section') = 'history'" -->
-            <a class="nav-link active" href="/history.html" aria-current="page">История</a>
-            <!--#else -->
-            <a class="nav-link" href="/history.html">История</a>
-            <!--#endif -->
-            <!--#if expr="v('section') = 'knowledge'" -->
-            <a class="nav-link active" href="/knowledge.html" aria-current="page">База знаний</a>
-            <!--#else -->
-            <a class="nav-link" href="/knowledge.html">База знаний</a>
-            <!--#endif -->
-            <!--#if expr="v('section') = 'archive'" -->
-            <a class="nav-link active" href="/archive.html" aria-current="page">Архив</a>
-            <!--#else -->
-            <a class="nav-link" href="/archive.html">Архив</a>
-            <!--#endif -->
-            <!--#if expr="v('section') = 'about'" -->
-            <a class="nav-link active" href="/about.html" aria-current="page">О проекте</a>
-            <!--#else -->
-            <a class="nav-link" href="/about.html">О проекте</a>
-            <!--#endif -->
+            <a class="nav-link" data-section="home" href="/">Главная</a>
+            <a class="nav-link" data-section="news" href="/news.html">Новости</a>
+            <a class="nav-link" data-section="reviews" href="/reviews.html">Обзоры</a>
+            <a class="nav-link" data-section="history" href="/history.html">История</a>
+            <a class="nav-link" data-section="knowledge" href="/knowledge.html">База знаний</a>
+            <a class="nav-link" data-section="archive" href="/archive.html">Архив</a>
+            <a class="nav-link" data-section="about" href="/about.html">О проекте</a>
         </nav>
     </div>
 </header>

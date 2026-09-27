@@ -1,7 +1,0 @@
-# Apache HTTP Server 2.4 with mod_include; AllowOverride All is required.
-# Process both page files and nested fragments without enabling SSI exec.
-Options +IncludesNOEXEC -Indexes
-AddType text/html .shtml
-AddOutputFilter INCLUDES .html .shtml
-SSILegacyExprParser Off
-DirectoryIndex index.html
