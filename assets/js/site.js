@@ -37,19 +37,4 @@
         });
     }));
 
-    const s = document.querySelector('[data-knowledge-search]');
-    const cards = document.querySelectorAll('[data-knowledge-grid] .knowledge-card');
-    const empty = document.querySelector('[data-empty-state]');
-    if (s) {
-        s.addEventListener('input', () => {
-            const q = s.value.trim().toLowerCase();
-            let c = 0;
-            cards.forEach(k => {
-                const show = !q || ((k.dataset.search || '') + ' ' + k.textContent).toLowerCase().includes(q);
-                k.hidden = !show;
-                if (show) c++;
-            });
-            if (empty) empty.hidden = c !== 0;
-        });
-    }
 })();

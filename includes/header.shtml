@@ -13,8 +13,6 @@
             <a class="nav-link" data-section="news" href="/news.html">Новости</a>
             <a class="nav-link" data-section="reviews" href="/reviews.html">Обзоры</a>
             <a class="nav-link" data-section="history" href="/history.html">История</a>
-            <a class="nav-link" data-section="knowledge" href="/knowledge.html">База знаний</a>
-            <a class="nav-link" data-section="archive" href="/archive.html">Архив</a>
             <a class="nav-link" data-section="about" href="/about.html">О проекте</a>
         </nav>
     </div>

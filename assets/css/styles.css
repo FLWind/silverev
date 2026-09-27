@@ -314,7 +314,7 @@ button, input {
         grid-template-columns: repeat(2,1fr)
     }
 
-.feature, .article-card, .research-card, .knowledge-card {
+.feature, .article-card, .research-card {
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: linear-gradient(145deg,rgba(255,255,255,.026),rgba(255,255,255,.008))
@@ -343,7 +343,7 @@ button, input {
         margin: 26px 0 10px
     }
 
-    .feature p, .article-card p, .research-card p, .knowledge-card p {
+    .feature p, .article-card p, .research-card p {
         color: var(--muted)
     }
 
@@ -806,82 +806,11 @@ button, input {
     font-size: 13px
 }
 
-.knowledge-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 18px
-}
-
-.knowledge-card {
-    padding: 26px;
-    min-height: 270px
-}
-
-    .knowledge-card > span {
-        color: var(--accent);
-        font-weight: 900;
-        font-size: 13px;
-        letter-spacing: .11em
-    }
-
-    .knowledge-card h2 {
-        font-size: 25px;
-        margin: 22px 0 10px
-    }
-
 .empty {
     text-align: center;
     color: var(--muted);
     padding: 40px
 }
-
-.archive-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 18px;
-    margin-top: 24px
-}
-
-    .archive-grid article {
-        display: grid;
-        grid-template-columns: 62px 1fr;
-        gap: 20px;
-        padding: 26px;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: var(--panel)
-    }
-
-        .archive-grid article > i {
-            display: grid;
-            place-items: center;
-            width: 58px;
-            height: 58px;
-            border: 1px solid #40505c;
-            border-radius: 16px;
-            color: var(--accent);
-            font-style: normal;
-            font-weight: 900
-        }
-
-    .archive-grid h2 {
-        margin: 0
-    }
-
-    .archive-grid p {
-        color: var(--muted)
-    }
-
-    .archive-grid a {
-        display: flex;
-        justify-content: space-between;
-        font-weight: 800
-    }
-
-        .archive-grid a span {
-            color: #798793;
-            font-weight: 500
-        }
 
 .source-card {
     display: grid;
@@ -1249,7 +1178,7 @@ button, input {
         margin: auto
     }
 
-    .cards.three, .knowledge-grid {
+    .cards.three {
         grid-template-columns: 1fr 1fr
     }
 
@@ -1314,7 +1243,7 @@ button, input {
         padding: 68px 0
     }
 
-    .cards.three, .cards.two, .knowledge-grid, .archive-grid, .footer-grid {
+    .cards.three, .cards.two, .footer-grid {
         grid-template-columns: 1fr
     }
 
