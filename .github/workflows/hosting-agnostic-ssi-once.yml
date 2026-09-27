@@ -1,0 +1,276 @@
+name: One-time hosting-agnostic SSI fix
+
+"on":
+  push:
+    branches: [main]
+    paths: [.github/workflows/hosting-agnostic-ssi-once.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: silverev-hosting-agnostic-ssi-once
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+
+      - name: Verify reviewed base
+        run: test "$(git rev-parse HEAD^)" = "6ab65397e1b4a14d18d8f9734293c89438774f12"
+
+      - name: Install Apache
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y apache2
+
+      - name: Convert navigation to portable SSI
+        shell: bash
+        run: |
+          python3 <<'PYTHON'
+          from pathlib import Path
+          import re
+          import subprocess
+
+          root = Path.cwd()
+          pages = sorted(root.glob("*.html"))
+          assert len(pages) == 15, f"Expected 15 HTML pages, got {len(pages)}"
+
+          header = """<header class="site-header">
+              <div class="container header-inner">
+                  <a class="brand" href="/">
+                      <img src="/favicon.svg" class="brand-mark" alt="SilverEV" width="46" height="46">
+                      <span class="brand-text">
+                          <strong>Silver<span>EV</span></strong>
+                          <small>Silver in Electric Vehicle</small>
+                      </span>
+                  </a>
+                  <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+                  <nav class="main-nav" aria-label="Основная навигация">
+                      <a class="nav-link" data-section="home" href="/">Главная</a>
+                      <a class="nav-link" data-section="news" href="/news.html">Новости</a>
+                      <a class="nav-link" data-section="reviews" href="/reviews.html">Обзоры</a>
+                      <a class="nav-link" data-section="history" href="/history.html">История</a>
+                      <a class="nav-link" data-section="knowledge" href="/knowledge.html">База знаний</a>
+                      <a class="nav-link" data-section="archive" href="/archive.html">Архив</a>
+                      <a class="nav-link" data-section="about" href="/about.html">О проекте</a>
+                  </nav>
+              </div>
+          </header>
+          """
+          (root / "includes/header.shtml").write_text(header, encoding="utf-8")
+
+          js = """(() => {
+              const b = document.querySelector('.menu-toggle');
+              const n = document.querySelector('.main-nav');
+
+              if (b && n) {
+                  b.addEventListener('click', () => {
+                      const o = n.classList.toggle('open');
+                      b.setAttribute('aria-expanded', String(o));
+                  });
+              }
+
+              const section = document.body?.dataset.section;
+              if (section) {
+                  document.querySelectorAll('.main-nav .nav-link[data-section]').forEach(link => {
+                      const active = link.dataset.section === section;
+                      link.classList.toggle('active', active);
+                      if (active) {
+                          link.setAttribute('aria-current', 'page');
+                      } else {
+                          link.removeAttribute('aria-current');
+                      }
+                  });
+              }
+
+              document.querySelectorAll('[data-current-year]').forEach(
+                  e => e.textContent = new Date().getFullYear()
+              );
+
+              const fs = document.querySelectorAll('[data-filter]');
+              const items = document.querySelectorAll('.filterable');
+              fs.forEach(f => f.addEventListener('click', () => {
+                  fs.forEach(x => x.classList.remove('active'));
+                  f.classList.add('active');
+                  const v = f.dataset.filter;
+                  items.forEach(i => {
+                      i.hidden = v !== 'all' && !(i.dataset.category || '').split(' ').includes(v);
+                  });
+              }));
+
+              const s = document.querySelector('[data-knowledge-search]');
+              const cards = document.querySelectorAll('[data-knowledge-grid] .knowledge-card');
+              const empty = document.querySelector('[data-empty-state]');
+              if (s) {
+                  s.addEventListener('input', () => {
+                      const q = s.value.trim().toLowerCase();
+                      let c = 0;
+                      cards.forEach(k => {
+                          const show = !q || (\`${k.dataset.search || ''} ${k.textContent}\`).toLowerCase().includes(q);
+                          k.hidden = !show;
+                          if (show) c++;
+                      });
+                      if (empty) empty.hidden = c !== 0;
+                  });
+              }
+          })();
+          """
+          (root / "assets/js/site.js").write_text(js, encoding="utf-8")
+
+          sections = {}
+          marker_re = re.compile(
+              r'^[ \t]*<!--#set\s+var="section"\s+value="([^"]+)"\s*-->[ \t]*\r?\n',
+              re.MULTILINE
+          )
+
+          for page in pages:
+              text = page.read_text(encoding="utf-8")
+              match = marker_re.search(text)
+              assert match, f"Missing #set section marker in {page}"
+              section = match.group(1)
+              sections[page.name] = section
+              text = marker_re.sub("", text, count=1)
+
+              body = re.search(r"<body\b([^>]*)>", text, flags=re.IGNORECASE)
+              assert body, f"Missing body in {page}"
+              attrs = body.group(1)
+              assert "data-section=" not in attrs, f"data-section already present in {page}"
+              replacement = f'<body{attrs} data-section="{section}">'
+              text = text[:body.start()] + replacement + text[body.end():]
+
+              assert not re.search(r'<!--#(?:set|if|elif|else|endif)\b', text, re.IGNORECASE), page
+              directives = [x.lower() for x in re.findall(r'<!--#([a-zA-Z]+)', text)]
+              assert directives and set(directives) == {"include"}, (page, directives)
+              page.write_text(text, encoding="utf-8")
+
+          htaccess = root / ".htaccess"
+          if htaccess.exists():
+              htaccess.unlink()
+
+          header_text = (root / "includes/header.shtml").read_text(encoding="utf-8")
+          assert "<!--#" not in header_text
+          assert header_text.count('data-section=') == 7
+
+          allowed = {"home","news","reviews","history","knowledge","archive","about","none"}
+          assert set(sections.values()) <= allowed
+          assert sections["index.html"] == "home"
+          assert sections["404.html"] == "none"
+
+          subprocess.run(["node", "--check", "assets/js/site.js"], check=True)
+
+          for path in list(root.glob("*.html")) + list((root / "includes").glob("*.shtml")):
+              text = path.read_text(encoding="utf-8")
+              bad = re.findall(r'<!--#(?!include\b)([a-zA-Z]+)', text, re.IGNORECASE)
+              assert not bad, f"Non-portable SSI remains in {path}: {bad}"
+
+          print("Converted sections:", sections)
+          PYTHON
+
+      - name: Test SSI with modern and legacy parsers
+        shell: bash
+        run: |
+          python3 <<'PYTHON'
+          from pathlib import Path
+          import os
+          import pwd
+          import grp
+          import subprocess
+          import tempfile
+          import time
+          import urllib.request
+          import urllib.error
+
+          root = Path.cwd().resolve()
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          pages = sorted(p.name for p in root.glob("*.html"))
+
+          for legacy in ("Off", "On"):
+              port = 18080 if legacy == "Off" else 18081
+              with tempfile.TemporaryDirectory(prefix=f"silverev-{legacy.lower()}-") as tmp:
+                  run = Path(tmp)
+                  run.chmod(0o755)
+                  user = pwd.getpwuid(os.geteuid()).pw_name
+                  group = grp.getgrgid(os.getegid()).gr_name
+                  conf = run / "httpd.conf"
+                  conf.write_text(f"""ServerRoot "{run}"
+          ServerName localhost
+          Listen 127.0.0.1:{port}
+          PidFile "{run}/httpd.pid"
+          LoadModule mpm_event_module /usr/lib/apache2/modules/mod_mpm_event.so
+          LoadModule authz_core_module /usr/lib/apache2/modules/mod_authz_core.so
+          LoadModule mime_module /usr/lib/apache2/modules/mod_mime.so
+          LoadModule dir_module /usr/lib/apache2/modules/mod_dir.so
+          LoadModule include_module /usr/lib/apache2/modules/mod_include.so
+          User {user}
+          Group {group}
+          ErrorLog "{run}/error.log"
+          LogLevel warn
+          TypesConfig /etc/mime.types
+          DocumentRoot "{root}"
+          <Directory "{root}">
+              Options +IncludesNOEXEC
+              AllowOverride None
+              Require all granted
+              AddType text/html .shtml
+              AddOutputFilter INCLUDES .html .shtml
+              SSILegacyExprParser {legacy}
+              DirectoryIndex index.html
+          </Directory>
+          """, encoding="utf-8")
+
+                  subprocess.run(["/usr/sbin/apache2", "-t", "-f", str(conf)], check=True)
+                  proc = subprocess.Popen(
+                      ["/usr/sbin/apache2", "-f", str(conf), "-DFOREGROUND"],
+                      stdout=subprocess.DEVNULL,
+                      stderr=subprocess.PIPE
+                  )
+                  try:
+                      base = f"http://127.0.0.1:{port}"
+                      for _ in range(100):
+                          try:
+                              opener.open(base + "/", timeout=2).read()
+                              break
+                          except urllib.error.URLError:
+                              if proc.poll() is not None:
+                                  raise RuntimeError(proc.stderr.read().decode())
+                              time.sleep(0.1)
+                      else:
+                          raise RuntimeError("Apache startup timed out")
+
+                      for page in pages:
+                          with opener.open(base + "/" + page, timeout=5) as response:
+                              html = response.read().decode("utf-8")
+                          assert "[an error occurred while processing this directive]" not in html, (legacy, page)
+                          assert "<!--#" not in html, (legacy, page)
+                          assert 'class="site-header"' in html, (legacy, page)
+                          assert "/assets/css/styles.css" in html, (legacy, page)
+                          assert "/assets/js/site.js" in html, (legacy, page)
+                          assert 'data-section="' in html, (legacy, page)
+
+                      log = (run / "error.log").read_text(encoding="utf-8")
+                      assert ":error]" not in log, log
+                      print(f"PASS parser={legacy}: {len(pages)} pages")
+                  finally:
+                      proc.terminate()
+                      proc.wait(timeout=10)
+          PYTHON
+
+      - name: Commit portable version and remove workflow
+        shell: bash
+        run: |
+          git rm -- .github/workflows/hosting-agnostic-ssi-once.yml
+          git add -A
+          git diff --cached --check
+          git diff --cached --stat
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'fix: make SSI navigation hosting-agnostic'
+          git push origin HEAD:refs/heads/main
+          echo "FINAL_COMMIT=$(git rev-parse HEAD)"
