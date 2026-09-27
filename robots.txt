@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /includes/
-
-Sitemap: https://silverev.ru/sitemap.xml

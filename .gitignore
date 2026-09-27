@@ -1,0 +1,4 @@
+/dist/
+/.silverev-build-*/
+__pycache__/
+*.py[cod]

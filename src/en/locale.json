@@ -1,0 +1,21 @@
+{
+  "tagline": "Silver in batteries and electric vehicles",
+  "menu_open": "Open menu",
+  "menu_close": "Close menu",
+  "navigation": "Main navigation",
+  "language_navigation": "Choose language",
+  "language_switch": "Читать эту страницу на русском",
+  "home": "Home",
+  "news": "News",
+  "reviews": "Analysis",
+  "history": "History",
+  "about": "About",
+  "footer_description": "Exploring the role of silver in batteries for electric vehicles and other applications.",
+  "sections": "Explore",
+  "contact": "Contact",
+  "contact_note": "Send sources, corrections and suggestions.",
+  "independent": "Independent research project",
+  "manifest_name": "SilverEV — Silver in batteries and electric vehicles",
+  "calculator_invalid": "Enter a number of zero or more in every field. The technology share must be between 0 and 100%.",
+  "calculator_overflow": "These values are too large to calculate. Reduce the input values."
+}

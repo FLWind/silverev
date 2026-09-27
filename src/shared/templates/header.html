@@ -1,0 +1,16 @@
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="/">
+            <img src="/favicon.svg" class="brand-mark" alt="SilverEV" width="46" height="46">
+            <span class="brand-text"><strong>Silver<span>EV</span></strong><small>{{tagline}}</small></span>
+        </a>
+        <button class="menu-toggle" aria-label="{{menu_open}}" data-label-open="{{menu_open}}" data-label-close="{{menu_close}}" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+        <nav class="main-nav" id="main-nav" aria-label="{{navigation}}">
+            {{nav_links}}
+        </nav>
+        <nav class="language-nav" aria-label="{{language_navigation}}">
+            <span class="language-current" lang="{{lang}}" aria-current="true">{{current_language}}</span>
+            <a class="language-switch" href="{{alternate_url}}" hreflang="{{alternate_lang}}" lang="{{alternate_lang}}" aria-label="{{language_switch}}">{{alternate_language}}</a>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,94 @@
+<main id="content">
+        <section class="article-hero">
+            <div class="container narrow">
+                <div class="breadcrumbs"><a href="/">Home</a> → <a href="/reviews.html">Analysis</a></div>
+                <b class="pill">Methodology · with calculator</b>
+                <h1>How much silver could the EV market need?</h1>
+                <p>From vehicle numbers to tonnes of metal: building a scenario that can be checked without turning an unknown battery recipe into a confident forecast.</p>
+                <div class="article-meta"><time datetime="2026-09-27">27 September 2026</time><span>8 min read</span></div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container article-layout">
+                <aside class="toc" aria-label="Article contents">
+                    <b>Contents</b>
+                    <a href="#scope">Defining the scope</a>
+                    <a href="#formula">Four inputs</a>
+                    <a href="#calculator">Calculator</a>
+                    <a href="#scenarios">Sensitivity</a>
+                    <a href="#silver-loading">Estimating Ag loading</a>
+                    <a href="#production">Checking manufacturing capacity</a>
+                    <a href="#sources">Sources</a>
+                </aside>
+                <article class="prose">
+                    <h2 id="scope">Define the scope first</h2>
+                    <p>For SilverEV, the central question is how much <b>additional silver inside battery cells</b> new technologies might require. Silver in vehicle contacts and electronics belongs to a separate consumption stream. When combining estimates, check whether battery-related consumption is already included in the underlying statistics.</p>
+                    <p>The appropriate starting point is annual production of new batteries. The fleet already on the road is unsuitable: silver in an existing battery is not needed again every year. New EV sales can serve as a proxy for production if inventories, delivery timing and replacement batteries are accounted for separately.</p>
+                    <p>Definitions can also be misleading. In the IEA's <i>Global EV Outlook 2026</i>, electric cars include battery electric vehicles (BEVs) and plug-in hybrids (PHEVs). They are best modelled separately because battery sizes and the likelihood of adopting new chemistries differ. The report puts combined sales above 20 million vehicles in 2025, but that is not the number of cars with silver-containing batteries. <a href="#source-1">[1]</a></p>
+
+                    <h2 id="formula">Four inputs instead of one headline number</h2>
+                    <div class="notice review-formula"><b>D = N × p × E × a / 1 000 000</b><br>D — tonnes of silver in new batteries per year.</div>
+                    <ul>
+                        <li><b>N</b> — new vehicles per year in the chosen segment, measured in individual vehicles.</li>
+                        <li><b>p</b> — the share using the specific silver-containing technology under consideration, between 0 and 1.</li>
+                        <li><b>E</b> — their average gross battery energy capacity, in kWh.</li>
+                        <li><b>a</b> — silver contained in finished cells per unit of energy, in g/kWh.</li>
+                    </ul>
+                    <p>The product <b>E × a</b> gives grams per vehicle using this technology. Dividing by one million converts grams to tonnes. If N is expressed in millions of vehicles, that divisor cancels out. If annual output of the relevant cells is known directly in GWh, the formula becomes simpler: <b>D = GWh × a</b>.</p>
+                    <p>For several segments, calculate each product separately and add the results. E must describe vehicles adopting the technology, not the entire market. Gross cell energy must not be silently mixed with the lower usable capacity available to the driver.</p>
+
+                    <h2 id="calculator">Try your own scenario</h2>
+                    <p id="calculator-note">All inputs below are <b>illustrative</b>. They demonstrate the method, not a forecast of sales, Samsung's market share or a disclosed silver loading for SolidStack. Change the inputs to see what drives the result.</p>
+                    <form id="demand-calculator" data-invalid-message="{{calculator_invalid}}" data-overflow-message="{{calculator_overflow}}" class="demand-calculator" aria-describedby="calculator-note" novalidate>
+                        <div class="calculator-fields">
+                            <label for="ev-volume">New vehicles, million per year<input id="ev-volume" name="volume" type="number" min="0" step="any" value="10" required inputmode="decimal"></label>
+                            <label for="ev-share">Technology share, %<input id="ev-share" name="share" type="number" min="0" max="100" step="any" value="5" required inputmode="decimal"></label>
+                            <label for="ev-energy">Battery capacity, kWh per vehicle<input id="ev-energy" name="energy" type="number" min="0" step="any" value="75" required inputmode="decimal"></label>
+                            <label for="ev-loading">Silver loading, g/kWh<input id="ev-loading" name="loading" type="number" min="0" step="any" value="5" required inputmode="decimal"></label>
+                        </div>
+                        <p id="calculator-error" class="calculator-error" role="status" hidden></p>
+                        <div id="calculator-results" class="calculator-results" aria-live="polite" aria-atomic="true">
+                            <p class="calculator-total"><output id="demand-tonnes" for="ev-volume ev-share ev-energy ev-loading">187.5</output><span>tonnes of silver per year</span></p>
+                            <dl class="calculator-details">
+                                <div><dt>Silver per vehicle using this technology</dt><dd><output id="demand-per-car" for="ev-energy ev-loading">375</output> g</dd></div>
+                                <div><dt>Vehicles using this technology</dt><dd><output id="demand-cars" for="ev-volume ev-share">500,000</output> per year</dd></div>
+                                <div><dt>Output of the corresponding batteries</dt><dd><output id="demand-energy" for="ev-volume ev-share ev-energy">37.5</output> GWh per year</dd></div>
+                            </dl>
+                        </div>
+                        <button type="reset" class="calculator-reset">Reset example</button>
+                        <noscript><p>Enable JavaScript to recalculate. The displayed example is: 10 million × 0.05 × 75 × 5 = 187.5 tonnes per year.</p></noscript>
+                    </form>
+                    <p>In the initial example, 500,000 out of 10 million cars receive silver-containing batteries. Each contains an assumed 375 g of silver. This would require annual production of 37.5 GWh of these batteries. That last figure is particularly useful because it can be compared with actual manufacturing capability.</p>
+
+                    <h2 id="scenarios">What changes the result?</h2>
+                    <p>Holding annual vehicle volume at 10 million and battery capacity at 75 kWh, we vary only the technology's share and silver loading. These values illustrate sensitivity; they are not a likely range for market development.</p>
+                    <div class="table-wrap" role="region" aria-label="Illustrative silver-demand scenarios" tabindex="0">
+                        <table>
+                            <caption>Annual tonnes of Ag under different assumptions</caption>
+                            <thead><tr><th scope="col">Technology share</th><th scope="col">1 g/kWh</th><th scope="col">5 g/kWh</th><th scope="col">10 g/kWh</th></tr></thead>
+                            <tbody><tr><th scope="row">1%</th><td>7.5</td><td>37.5</td><td>75</td></tr><tr><th scope="row">5%</th><td>37.5</td><td>187.5</td><td>375</td></tr><tr><th scope="row">10%</th><td>75</td><td>375</td><td>750</td></tr></tbody>
+                        </table>
+                    </div>
+                    <p>The relationship is linear: doubling any one input doubles the result. But inputs can change together. Reducing Ag loading, for example, could lower costs and help adoption. Combining the highest market share with the highest metal loading does not automatically produce a plausible scenario.</p>
+
+                    <h2 id="silver-loading">The crucial unknown: grams per kWh</h2>
+                    <p>Samsung's 2020 paper demonstrates a silver–carbon interlayer that regulates lithium deposition. That result alone does not establish silver consumption in a future mass-produced automotive battery. <a href="#source-2">[2]</a> We need the mass loading of Ag itself, the coated area and the energy of the corresponding cells. The thickness of a composite layer is not the thickness of solid silver.</p>
+                    <p>Given silver loading L in mg/cm², areal capacity q in mAh/cm² and average operating voltage V, we can calculate <b>a = 1000 × L / (q × V)</b> in g/kWh. This converts units for the same active area. With double-sided coatings, both sides must be treated consistently in the mass and energy calculations.</p>
+                    <p>Until a reliable value of a is available, a sensitivity table is the defensible result. Assigning a fixed number of grams of silver to every EV means guessing the composition, battery size and adoption share all at once.</p>
+
+                    <h2 id="production">Check the scenario against factories and material flows</h2>
+                    <p>Start with available output of qualified cells rather than the combined nameplate capacity of every announced project. A scenario requiring 37.5 GWh per year needs more than a pilot line: suitable capacity, equipment utilisation, manufacturing yield and orders for the relevant vehicles. The stages are discussed in our <a href="/battery-lab-to-market.html">article on the path from laboratory to vehicle</a>.</p>
+                    <p>D represents metal in finished batteries. In a simple model, if the fraction of incoming silver incorporated into good products is y, gross input is D / y. This is not yet demand for newly mined metal: some process scrap may return to production. Silver recovered from retired batteries belongs to later years and depends on collection and recovery rates.</p>
+                    <p>For an estimate that can be updated, record a source, date and status alongside each input: observed fact, company plan or modelling assumption. A new manufacturing announcement can then update a specific part of the model instead of immediately becoming a forecast for the whole silver market.</p>
+
+                    <h2 id="sources">Sources and methodology</h2>
+                    <ol class="sources">
+                        <li id="source-1"><a href="https://www.iea.org/reports/global-ev-outlook-2026/trends-in-electric-cars" target="_blank" rel="noopener noreferrer">IEA — Global EV Outlook 2026: Trends in electric cars</a>. New-car statistics and BEV/PHEV definitions.</li>
+                        <li id="source-2"><a href="https://www.nature.com/articles/s41560-020-0575-z" target="_blank" rel="noopener noreferrer">Lee et al. — High-energy long-cycling all-solid-state lithium metal batteries enabled by silver–carbon composite anodes</a>. Nature Energy, 9 March 2020.</li>
+                    </ol>
+                    <p>The formulas, calculator and scenario table are SilverEV calculations. Their illustrative inputs are not estimates supplied by the authors of the cited sources.</p>
+                    <div class="article-end"><b>Related reading</b><p><a href="/samsung-solidstack.html">Samsung SolidStack: why Ag–C is one of the most promising approaches</a></p><p><a href="/reviews.html">All analysis →</a></p></div>
+                </article>
+            </div>
+        </section>
+    </main>

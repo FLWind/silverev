@@ -1,0 +1,8 @@
+{
+  "default_language": "en",
+  "contact_email": "contact@silverev.ru",
+  "sites": {
+    "ru": {"origin": "https://silverev.ru", "name": "Русский", "analytics": true},
+    "en": {"origin": "https://silverev.org", "name": "English", "analytics": false}
+  }
+}

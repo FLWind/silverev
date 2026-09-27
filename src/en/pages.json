@@ -1,0 +1,141 @@
+{
+  "404.html": {
+    "title": "Page not found | SilverEV",
+    "description": "The requested page could not be found. Visit the SilverEV homepage or browse the site sections.",
+    "og_title": "Page not found",
+    "type": "website",
+    "section": "none",
+    "body_class": "",
+    "noindex": true,
+    "source_sha256": "775e6a6243548a58c4b8026fcc75f5d18b785fa0076dce176d93232930f106b8"
+  },
+  "about.html": {
+    "title": "About SilverEV | SilverEV",
+    "description": "An independent research project exploring silver, battery technology, the energy transition and electric vehicles.",
+    "og_title": "About SilverEV",
+    "type": "website",
+    "section": "about",
+    "body_class": "",
+    "source_sha256": "3f1f4648518ec07fa0dfbc680e5bc3fdf5d397f588c4af57e5ceaf6158a7781f"
+  },
+  "actual-ssb.html": {
+    "title": "Silver in solid-state batteries since 2020 | SilverEV",
+    "description": "Solid-state batteries since 2020: Samsung, QuantumScape, Stanford, Toyota and new functions for silver in EV battery research.",
+    "og_title": "Silver in solid-state batteries since 2020",
+    "type": "article",
+    "section": "history",
+    "body_class": "article-page",
+    "source_sha256": "959581da317c05946208baa421c36b89fa68f9fc4ff7d0b07752a666d9fc8aeb"
+  },
+  "battery-lab-to-market.html": {
+    "title": "From a lab cell to an electric vehicle: what still needs to work | SilverEV",
+    "description": "Assessing automotive readiness for silver-containing batteries: cell format, test conditions, reproducibility and manufacturing scale-up.",
+    "og_title": "From a lab cell to an electric vehicle: what still needs to work",
+    "type": "article",
+    "section": "reviews",
+    "body_class": "article-page",
+    "source_sha256": "d9019d88962c454616f59363b90cb876033e42f657d242879f2578df2a307555"
+  },
+  "brothers-hunt.html": {
+    "title": "The Hunt brothers, silver and battery technologies of the 1970s | SilverEV",
+    "description": "The 1970s silver market, the Hunt brothers and the unproven hypothesis that battery technology influenced expectations of silver demand.",
+    "og_title": "The Hunt brothers, silver and battery technologies of the 1970s",
+    "type": "article",
+    "section": "history",
+    "body_class": "article-page",
+    "source_sha256": "96fc2dc16e5035fc6488cf97e5dfa5f53c3e7b4e2927e11ea9004b916a21c698"
+  },
+  "ev-silver-demand.html": {
+    "title": "How much silver could the EV market need? | SilverEV",
+    "description": "Estimate additional silver demand from EV batteries using four inputs, a scenario calculator and a transparent methodology.",
+    "og_title": "How much silver could the EV market need?",
+    "type": "article",
+    "section": "reviews",
+    "body_class": "article-page",
+    "scripts": [
+      "/assets/js/demand-calculator.js"
+    ],
+    "source_sha256": "4e27585822b18aee615f98fa0ce1c3415ca3092ada45ea11b51ecef06a3a6f15"
+  },
+  "history.html": {
+    "title": "The history of silver in batteries and electric vehicles | SilverEV",
+    "description": "The history of silver–zinc and solid-state batteries: spaceflight, early EVs, the silver market and modern technologies.",
+    "og_title": "The history of silver in batteries and electric vehicles",
+    "type": "website",
+    "section": "history",
+    "body_class": "",
+    "source_sha256": "6ff16cd29f8993ee0261e277c7da290047e0051617d66aa1dfcffb234b3f0b46"
+  },
+  "index.html": {
+    "title": "Silver in batteries and electric vehicles | SilverEV",
+    "description": "SilverEV explores silver's role in batteries and the energy transition through history, news, analysis and primary sources.",
+    "og_title": "Silver in batteries and electric vehicles",
+    "type": "website",
+    "section": "home",
+    "body_class": "home",
+    "source_sha256": "901559225284577533a4e41fa64d0dfd94d53317c6d80167be6917411987e4fa"
+  },
+  "lithium-focus.html": {
+    "title": "Lithium-ion batteries and silver, 1980–2010 | SilverEV",
+    "description": "How lithium-ion became a mass-market battery technology while silver retained specialised roles in energy storage between 1980 and 2010.",
+    "og_title": "Lithium-ion batteries and silver, 1980–2010",
+    "type": "article",
+    "section": "history",
+    "body_class": "article-page",
+    "source_sha256": "81d811863499d949c485c4b83ac684f50b0d27e805f16de64d8bbc635fe9fb66"
+  },
+  "new-energy.html": {
+    "title": "Silver and new energy technologies, 2011–2019 | SilverEV",
+    "description": "Silver in silicon anodes, solid-state battery research, photovoltaics and the growing EV ecosystem of 2011–2019.",
+    "og_title": "Silver and new energy technologies, 2011–2019",
+    "type": "article",
+    "section": "history",
+    "body_class": "article-page",
+    "source_sha256": "3e8a8468e41cbc98901b8d5827f037e664153f628c436746e5e7af72bce7a425"
+  },
+  "news.html": {
+    "title": "Silver in batteries: news from 2020 to 2026 | SilverEV",
+    "description": "Key silver-related battery research and industrial developments from 2020 to September 2026, with concise explanations and primary sources.",
+    "og_title": "Silver in batteries: news from 2020 to 2026",
+    "type": "website",
+    "section": "news",
+    "body_class": "",
+    "source_sha256": "5b80df9acbcb7d65abd9c46df2c1448bc6dbabedb919ed12da3b9c6b5f6e000e"
+  },
+  "reviews.html": {
+    "title": "Analysis of silver in battery technologies | SilverEV",
+    "description": "Analysis of silver in batteries, solid-state technologies and electric vehicles, including potential demand and manufacturing readiness.",
+    "og_title": "Analysis of silver in battery technologies",
+    "type": "website",
+    "section": "reviews",
+    "body_class": "",
+    "source_sha256": "4c3abf30ccc2aae8ee169b53f1dfd98ad110e537af78f23f2db4934c26f7aadb"
+  },
+  "samsung-solidstack.html": {
+    "title": "Samsung SolidStack: why Ag–C is a promising approach | SilverEV",
+    "description": "Samsung's silver–carbon research, pilot manufacturing, BMW collaboration and the limits of present knowledge about future silver demand.",
+    "og_title": "Samsung SolidStack: why Ag–C is a promising approach",
+    "type": "article",
+    "section": "reviews",
+    "body_class": "article-page",
+    "source_sha256": "0a7b045d0fe0b48add36c9e594346778fbd541ed57e4793254323a602a43363f"
+  },
+  "silver-zinc-history.html": {
+    "title": "The first silver–zinc batteries, 1930–1960 | SilverEV",
+    "description": "Henri André, military programmes and the early development and adoption of silver–zinc rechargeable batteries from 1930 to 1960.",
+    "og_title": "The first silver–zinc batteries, 1930–1960",
+    "type": "article",
+    "section": "history",
+    "body_class": "article-page",
+    "source_sha256": "096a63471fb3d5b1ae2a0bc32c241fa6bbb890309fcb5615194412efab93bffa"
+  },
+  "space-and-cars.html": {
+    "title": "Silver batteries in spaceflight and early EVs, 1960–1970 | SilverEV",
+    "description": "Silver–zinc batteries in US and Soviet space programmes, military equipment and the experimental electric vehicles of the 1960s.",
+    "og_title": "Silver batteries in spaceflight and early EVs, 1960–1970",
+    "type": "article",
+    "section": "history",
+    "body_class": "article-page",
+    "source_sha256": "451e437094905e2e3e78a2140e365efedadcd48c1a7a16574fef3d0fc97e42cd"
+  }
+}
